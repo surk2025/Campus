@@ -1,0 +1,230 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CampusGuide</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span>CampusGuide</span>
+            </div>
+
+            <p class="menu-heading">MAIN MENU</p>
+
+            <nav class="navigation">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="dashboard.html" class="nav-link active">📊 Dashboard</a>
+                <a href="map.html" class="nav-link">🗺️ Campus Map</a>
+                <a href="classrooms.html" class="nav-link">🏫 Classrooms</a>
+                <a href="labs.html" class="nav-link">💻 Laboratories</a>
+                <a href="faculty.html" class="nav-link">👨‍🏫 Faculty</a>
+                <a href="events.html" class="nav-link">📅 Events</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="login.html" class="nav-link logout" id="logoutBtn">
+                    🚪 Logout
+                </a>
+                <p class="sidebar-footer">© 2026 S4Syntax Team</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle navigation">☰</button>
+
+                <div>
+                    <p class="topbar-label">STUDENT PORTAL</p>
+                    <h2>Dashboard</h2>
+                </div>
+
+                <div class="profile">
+                    <div class="avatar" id="userAvatar">S</div>
+                    <div>
+                        <strong id="userName">Student</strong>
+                        <p>Campus Explorer</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Welcome Section -->
+            <section class="welcome-card">
+                <div>
+                    <p class="welcome-label">YOUR CAMPUS, YOUR GUIDE</p>
+                    <h1>Welcome back, <span id="welcomeName">Student</span>! 👋</h1>
+                    <p>
+                        Explore your campus, find locations and stay updated
+                        with everything happening around you.
+                    </p>
+                    <a href="map.html" class="primary-btn">
+                        Explore Campus →
+                    </a>
+                </div>
+                <div class="welcome-illustration">🧭</div>
+            </section>
+
+            <!-- Statistics -->
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-icon blue">🗺️</div>
+                    <p>Campus Locations</p>
+                    <h2>25+</h2>
+                    <span>Explore campus places</span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon green">🏫</div>
+                    <p>Classrooms</p>
+                    <h2>15+</h2>
+                    <span>Find your classroom</span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon orange">💻</div>
+                    <p>Laboratories</p>
+                    <h2>08+</h2>
+                    <span>Discover campus labs</span>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon purple">📅</div>
+                    <p>Upcoming Events</p>
+                    <h2>03</h2>
+                    <span>Stay informed</span>
+                </article>
+            </section>
+
+            <!-- Search -->
+            <section class="section-card search-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Where do you want to go?</h2>
+                        <p>Search for a place on your campus.</p>
+                    </div>
+                    <span class="heading-icon">🔎</span>
+                </div>
+
+                <form id="searchForm" class="search-form">
+                    <input
+                        type="search"
+                        id="campusSearch"
+                        placeholder="Try Computer Lab, Library, Auditorium..."
+                        aria-label="Search campus locations"
+                        required
+                    >
+                    <button type="submit" class="primary-btn">Search</button>
+                </form>
+                <p id="searchMessage" class="message" aria-live="polite"></p>
+            </section>
+
+            <!-- Quick Access -->
+            <section class="quick-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Quick Access</h2>
+                        <p>Everything you need, in one place.</p>
+                    </div>
+                </div>
+
+                <div class="quick-grid">
+                    <a href="map.html" class="quick-card">
+                        <div class="quick-icon blue">🗺️</div>
+                        <h3>Campus Map</h3>
+                        <p>Find locations and routes.</p>
+                        <span>Explore →</span>
+                    </a>
+
+                    <a href="classrooms.html" class="quick-card">
+                        <div class="quick-icon green">🏫</div>
+                        <h3>Classrooms</h3>
+                        <p>Locate classrooms easily.</p>
+                        <span>View rooms →</span>
+                    </a>
+
+                    <a href="labs.html" class="quick-card">
+                        <div class="quick-icon orange">💻</div>
+                        <h3>Laboratories</h3>
+                        <p>Find labs and facilities.</p>
+                        <span>Explore labs →</span>
+                    </a>
+
+                    <a href="faculty.html" class="quick-card">
+                        <div class="quick-icon purple">👨‍🏫</div>
+                        <h3>Faculty</h3>
+                        <p>Find faculty and their rooms.</p>
+                        <span>View faculty →</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Events -->
+            <section class="section-card events-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Campus Updates & Events</h2>
+                        <p>Important activities at your college.</p>
+                    </div>
+                    <a href="events.html" class="view-all">View all →</a>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span>OCT</span>
+                        <strong>15</strong>
+                    </div>
+                    <div class="event-details">
+                        <h3>Technical Workshop</h3>
+                        <p>Learn new technologies and practical skills.</p>
+                    </div>
+                    <span class="event-tag">Workshop</span>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span>OCT</span>
+                        <strong>18</strong>
+                    </div>
+                    <div class="event-details">
+                        <h3>Project Exhibition</h3>
+                        <p>Explore student projects and innovations.</p>
+                    </div>
+                    <span class="event-tag">Academic</span>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span>OCT</span>
+                        <strong>22</strong>
+                    </div>
+                    <div class="event-details">
+                        <h3>Campus Activity Day</h3>
+                        <p>Participate in campus activities.</p>
+                    </div>
+                    <span class="event-tag">Activity</span>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <p>CampusGuide — Find it. Navigate it. Experience your campus smarter.</p>
+                <p>© 2026 S4Syntax Team. All Rights Reserved.</p>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
+```

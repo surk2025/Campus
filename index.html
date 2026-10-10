@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CampusGuide | Smart Campus Navigation</title>
+
+    <link rel="stylesheet" href="css\home.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <i data-lucide="map-pin"></i>
+            </div>
+
+            <span>
+                Campus<span>Guide</span>
+            </span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#features">Features</a>
+            <a href="#locations">Locations</a>
+            <a href="#events">Events</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+            <a href="register.html" class="register-btn">
+                Register
+            </a>
+        </div>
+
+        <button class="mobile-menu-btn" id="menuBtn">
+            <i data-lucide="menu"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#locations">Locations</a>
+    <a href="#events">Events</a>
+
+    <div class="mobile-buttons">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <!-- LEFT -->
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Smart Campus Navigation
+            </div>
+
+            <h1>
+                Navigate Your Campus
+                <span>Smarter & Faster</span>
+            </h1>
+
+            <p>
+                Find classrooms, laboratories, facilities and
+                campus events in seconds with CampusGuide.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#locations" class="primary-btn">
+                    Explore Campus
+                    <i data-lucide="arrow-right"></i>
+                </a>
+
+                <a href="login.html" class="secondary-btn">
+                    Login
+                </a>
+
+            </div>
+
+            <!-- STATS -->
+
+            <div class="hero-stats">
+
+                <div class="stat">
+                    <strong>50+</strong>
+                    <span>Locations</span>
+                </div>
+
+                <div class="stat">
+                    <strong>10+</strong>
+                    <span>Buildings</span>
+                </div>
+
+                <div class="stat">
+                    <strong>3000+</strong>
+                    <span>Students</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="hero-visual">
+
+            <div class="hero-image">
+
+                <img
+                    src="assets\img\campusmap.jpeg"
+                    alt="College Campus"
+                >
+
+                <div class="image-overlay"></div>
+
+                <!-- Floating Navigation Card -->
+
+                <div class="navigation-card">
+
+                    <div class="nav-card-icon">
+                        <i data-lucide="navigation"></i>
+                    </div>
+
+                    <div>
+                        <strong>Campus Navigation</strong>
+                        <span>Find your destination easily</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Location Pin 
+
+                <div class="map-pin pin-one">
+                    <i data-lucide="map-pin"></i>
+                </div>
+
+                <div class="map-pin pin-two">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                
+                -->
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features-section" id="features">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                FEATURES
+            </span>
+
+            <h2>
+                Everything You Need on Campus
+            </h2>
+
+            <p>
+                CampusGuide makes finding and exploring your
+                campus simple, fast and convenient.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <!-- Feature 1 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">
+                    <i data-lucide="map"></i>
+                </div>
+
+                <h3>Smart Map</h3>
+
+                <p>
+                    Explore an interactive campus map
+                    with all important locations.
+                </p>
+
+                <a href="map.html">
+                    Explore Map
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Feature 2 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon green">
+                    <i data-lucide="search"></i>
+                </div>
+
+                <h3>Smart Search</h3>
+
+                <p>
+                    Quickly find classrooms, labs,
+                    buildings and facilities.
+                </p>
+
+                <a href="#locations">
+                    Find Locations
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Feature 3 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">
+                    <i data-lucide="navigation"></i>
+                </div>
+
+                <h3>Navigation</h3>
+
+                <p>
+                    Get simple step-by-step directions
+                    to your destination.
+                </p>
+
+                <a href="navigation.html">
+                    Get Directions
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Feature 4 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange">
+                    <i data-lucide="qr-code"></i>
+                </div>
+
+                <h3>QR Access</h3>
+
+                <p>
+                    Scan QR codes to quickly identify
+                    campus locations.
+                </p>
+
+                <a href="#">
+                    Learn More
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Feature 5 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon pink">
+                    <i data-lucide="calendar-days"></i>
+                </div>
+
+                <h3>Campus Events</h3>
+
+                <p>
+                    Stay updated with upcoming
+                    college events and activities.
+                </p>
+
+                <a href="#events">
+                    View Events
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Feature 6 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon cyan">
+                    <i data-lucide="building-2"></i>
+                </div>
+
+                <h3>Locations</h3>
+
+                <p>
+                    Explore classrooms, libraries,
+                    canteens and other facilities.
+                </p>
+
+                <a href="#locations">
+                    Explore
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-section">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                Find Your Destination in 3 Steps
+            </h2>
+
+            <p>
+                Getting around your campus has never been easier.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <div class="step-icon">
+                    <i data-lucide="search"></i>
+                </div>
+
+                <h3>Search</h3>
+
+                <p>
+                    Search for classrooms, labs,
+                    buildings or facilities.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <div class="step-icon">
+                    <i data-lucide="mouse-pointer-click"></i>
+                </div>
+
+                <h3>Select</h3>
+
+                <p>
+                    Select your destination and
+                    view complete location details.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <div class="step-icon">
+                    <i data-lucide="navigation"></i>
+                </div>
+
+                <h3>Navigate</h3>
+
+                <p>
+                    Get directions and follow
+                    the route to your destination.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOCATIONS ================= -->
+
+<section class="locations-section" id="locations">
+
+    <div class="section-container">
+
+        <div class="section-top">
+
+            <div>
+
+                <span class="section-label">
+                    EXPLORE
+                </span>
+
+                <h2>
+                    Popular Locations
+                </h2>
+
+            </div>
+
+            <a href="map.html" class="view-all">
+                View All
+                <i data-lucide="arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="location-grid">
+
+            <!-- Location -->
+
+            <div class="location-card">
+
+                <div class="location-image cse">
+                    <span class="location-badge">
+                        Academic
+                    </span>
+                </div>
+
+                <div class="location-info">
+
+                    <h3>CSE Block</h3>
+
+                    <p>
+                        Computer Science Department
+                    </p>
+
+                    <div class="location-distance">
+                        <i data-lucide="map-pin"></i>
+                        75m away
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-image library">
+                    <span class="location-badge">
+                        Library
+                    </span>
+                </div>
+
+                <div class="location-info">
+
+                    <h3>Central Library</h3>
+
+                    <p>
+                        Reading & Digital Library
+                    </p>
+
+                    <div class="location-distance">
+                        <i data-lucide="map-pin"></i>
+                        120m away
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-image canteen">
+                    <span class="location-badge">
+                        Food
+                    </span>
+                </div>
+
+                <div class="location-info">
+
+                    <h3>Canteen</h3>
+
+                    <p>
+                        Food & Dining
+                    </p>
+
+                    <div class="location-distance">
+                        <i data-lucide="map-pin"></i>
+                        100m away
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="location-card">
+
+                <div class="location-image auditorium">
+                    <span class="location-badge">
+                        Events
+                    </span>
+                </div>
+
+                <div class="location-info">
+
+                    <h3>Auditorium</h3>
+
+                    <p>
+                        Events & Seminars
+                    </p>
+
+                    <div class="location-distance">
+                        <i data-lucide="map-pin"></i>
+                        250m away
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EVENTS ================= -->
+
+<section class="events-section" id="events">
+
+    <div class="section-container">
+
+        <div class="section-top">
+
+            <div>
+
+                <span class="section-label">
+                    STAY UPDATED
+                </span>
+
+                <h2>
+                    Upcoming Events
+                </h2>
+
+            </div>
+
+            <a href="events.html" class="view-all">
+                View All
+                <i data-lucide="arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="events-grid">
+
+            <div class="event-card">
+
+                <div class="event-date">
+                    <strong>15</strong>
+                    <span>OCT</span>
+                </div>
+
+                <div class="event-content">
+
+                    <span class="event-type">
+                        Technical
+                    </span>
+
+                    <h3>
+                        Hackathon 2026
+                    </h3>
+
+                    <div class="event-meta">
+                        <span>
+                            <i data-lucide="clock"></i>
+                            10:00 AM
+                        </span>
+
+                        <span>
+                            <i data-lucide="map-pin"></i>
+                            Auditorium
+                        </span>
+                    </div>
+
+                </div>
+
+                <i
+                    data-lucide="arrow-up-right"
+                    class="event-arrow"
+                ></i>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-date purple-date">
+                    <strong>18</strong>
+                    <span>OCT</span>
+                </div>
+
+                <div class="event-content">
+
+                    <span class="event-type purple-text">
+                        Workshop
+                    </span>
+
+                    <h3>
+                        Tech Workshop
+                    </h3>
+
+                    <div class="event-meta">
+                        <span>
+                            <i data-lucide="clock"></i>
+                            2:00 PM
+                        </span>
+
+                        <span>
+                            <i data-lucide="map-pin"></i>
+                            Seminar Hall
+                        </span>
+                    </div>
+
+                </div>
+
+                <i
+                    data-lucide="arrow-up-right"
+                    class="event-arrow"
+                ></i>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-date pink-date">
+                    <strong>25</strong>
+                    <span>OCT</span>
+                </div>
+
+                <div class="event-content">
+
+                    <span class="event-type pink-text">
+                        Cultural
+                    </span>
+
+                    <h3>
+                        Cultural Fest
+                    </h3>
+
+                    <div class="event-meta">
+                        <span>
+                            <i data-lucide="clock"></i>
+                            6:00 PM
+                        </span>
+
+                        <span>
+                            <i data-lucide="map-pin"></i>
+                            Main Ground
+                        </span>
+                    </div>
+
+                </div>
+
+                <i
+                    data-lucide="arrow-up-right"
+                    class="event-arrow"
+                ></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta-section">
+
+    <div class="cta-container">
+
+        <div class="cta-icon">
+            <i data-lucide="graduation-cap"></i>
+        </div>
+
+        <div class="cta-content">
+
+            <h2>
+                Your Campus, Your Guide
+            </h2>
+
+            <p>
+                Explore your campus like never before.
+            </p>
+
+        </div>
+
+        <a href="register.html" class="cta-button">
+            Get Started
+            <i data-lucide="arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="map-pin"></i>
+                </div>
+
+                <span>
+                    Campus<span>Guide</span>
+                </span>
+            </div>
+
+            <p>
+                Designed And Developed By Surjeet With S4Syntax Team.
+            </p>
+
+        </div>
+
+
+       
+
+
+        <div class="footer-social">
+
+            <a href="#">
+                <i data-lucide="instagram"></i>
+            </a>
+
+            <a href="#">
+                <i data-lucide="linkedin"></i>
+            </a>
+
+            <a href="#">
+                <i data-lucide="github"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 S4Syntax Team. All rights reserved. | CampusGuide
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.ts" type="module"></script>
+
+</body>
+</html>
