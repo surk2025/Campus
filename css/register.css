@@ -1,0 +1,340 @@
+/* ==============================
+   CampusGuide - Register Page
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --text: #172033;
+    --muted: #64748b;
+    --border: #dce4ef;
+    --background: #f1f5fb;
+    --white: #ffffff;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* Main Container */
+
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch; 
+    padding: 200px;
+    gap: 30px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* Left Section */
+
+.left-section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px; 
+    border-radius: 24px;
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 45, 105, 0.94),
+            rgba(37, 99, 235, 0.83)
+        ),
+        url("../assets/images/campus.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 55px;
+    letter-spacing: 0.3px;
+}
+
+.left-section h1 {
+    font-size: clamp(30px, 3.5vw, 48px);
+    line-height: 1.2;
+    max-width: 500px;
+    margin-bottom: 22px;
+}
+
+.left-section p {
+    max-width: 480px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #e5edff;
+}
+
+/* Decorative line */
+
+.left-section h1::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 5px;
+    background: #93c5fd;
+    border-radius: 10px;
+    margin-top: 22px;
+}
+
+/* Right Section */
+
+.right-section {
+    width: 50%;
+    max-width: 100%;
+    flex-shrink: 0;
+    background: var(--white);
+    border: 1px solid #e8edf5;
+    border-radius: 24px;
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.07);
+}
+
+.right-section h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+/* Form */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #334155;
+}
+
+form input:not([type="checkbox"]),
+form select {
+    width: 100%;
+    height: 47px;
+    padding: 0 14px;
+    margin-bottom: 19px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    background: #ffffff;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form input::placeholder {
+    color: #94a3b8;
+}
+
+form input:not([type="checkbox"]):focus,
+form select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+form select {
+    cursor: pointer;
+}
+
+/* Terms and Conditions */
+
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 23px;
+    color: #475569;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.terms span {
+    cursor: pointer;
+}
+
+/* Create Account Button */
+
+.create-btn {
+    width: 100%;
+    min-height: 49px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.17);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.create-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.23);
+}
+
+.create-btn:active {
+    transform: translateY(0);
+}
+
+/* Login Link */
+
+.login-link {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.login-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.login-link a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Tablet Layout */
+
+@media (max-width: 1000px) {
+    .register-container {
+        padding: 22px;
+        gap: 20px;
+    }
+
+    .left-section {
+        padding: 32px;
+    }
+
+    .right-section {
+        width: 420px;
+        padding: 30px;
+    }
+
+    .logo {
+        margin-bottom: 35px;
+    }
+
+    .left-section p {
+        font-size: 14px;
+    }
+}
+
+/* Mobile Layout */
+
+@media (max-width: 720px) {
+    .register-container {
+        flex-direction: column;
+        padding: 16px;
+        gap: 18px;
+    }
+
+    .left-section {
+        flex: none;
+        min-height: 260px;
+        padding: 28px;
+        border-radius: 18px;
+    }
+
+    .logo {
+        font-size: 21px;
+        margin-bottom: 28px;
+    }
+
+    .left-section h1 {
+        font-size: 29px;
+        margin-bottom: 15px;
+    }
+
+    .left-section h1::after {
+        margin-top: 15px;
+    }
+
+    .left-section p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .right-section {
+        width: 100%;
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    .right-section h2 {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        margin-bottom: 23px;
+    }
+}
+
+/* Small Mobile */
+
+@media (max-width: 380px) {
+    .register-container {
+        padding: 10px;
+    }
+
+    .left-section,
+    .right-section {
+        padding: 22px 17px;
+    }
+
+    .left-section h1 {
+        font-size: 25px;
+    }
+
+    form input:not([type="checkbox"]),
+    form select {
+        font-size: 13px;
+    }
+}
