@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Guider - Interactive Map</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Arial,sans-serif;background:#f3f6fb;color:#172b4d}
+header{background:linear-gradient(120deg,#142b4a,#2456a6);color:white;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon img{height:70px;width:70px;border-radius:50%;padding:0px;}
+.brand h1{font-size:23px}
+.brand p{font-size:12px;color:#dbeafe;margin-top:4px}
+.back{background:white;color:#142b4a;text-decoration:none;padding:11px 15px;border-radius:9px;font-weight:700;font-size:13px}
+main{width:94%;max-width:1450px;margin:28px auto}
+.heading{margin-bottom:20px}
+.heading h2{font-size:27px;margin-bottom:7px}
+.heading p{font-size:14px;color:#64748b;line-height:1.6}
+.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(290px,.8fr);gap:22px;align-items:start}
+.panel{background:white;border:1px solid #e2e8f0;border-radius:17px;overflow:hidden;box-shadow:0 6px 25px #142b4a0a}
+.panel-head{padding:18px 20px;border-bottom:1px solid #e2e8f0}
+.panel-head h3{font-size:17px;margin-bottom:5px}
+.panel-head p{font-size:12px;color:#64748b}
+.map-area{padding:12px}
+.map-frame{position:relative;width:100%;aspect-ratio:1056/1414;overflow:hidden;border-radius:10px;background:#e8edf3}
+.map-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.hotspots{position:absolute;inset:0;width:100%;height:100%}
+.hotspot{fill:transparent!important;fill-opacity:0!important;stroke:transparent!important;stroke-width:0!important;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.hotspot:hover,.hotspot:focus,.hotspot:active{fill:transparent!important;fill-opacity:0!important;stroke:transparent!important;stroke-width:0!important;outline:none!important}
+.note{margin:12px 2px 2px;padding:12px;background:#eff6ff;color:#315580;border-radius:9px;font-size:12px;line-height:1.6}
+.search{padding:16px 17px 10px}
+.search input{width:100%;border:1px solid #d8e1ed;border-radius:10px;padding:13px;font-size:14px;outline:none}
+.search input:focus{border-color:#2563eb;box-shadow:0 0 0 3px #2563eb12}
+.count-row{display:flex;justify-content:space-between;align-items:center;padding:9px 18px;color:#64748b;font-size:12px}
+#count{background:#eaf2ff;color:#2456a6;padding:4px 9px;border-radius:20px;font-weight:700}
+#locations{list-style:none;padding:0 10px 12px;max-height:700px;overflow-y:auto}
+.item{display:flex;align-items:center;gap:11px;padding:11px;border-radius:11px;margin:3px 0;cursor:pointer;border:1px solid transparent}
+.item:hover{background:#f2f7ff;border-color:#e1ebff}
+.item-icon{width:41px;height:41px;border-radius:11px;background:#eaf2ff;display:grid;place-items:center;font-size:21px;flex-shrink:0}
+.item-info{flex:1;min-width:0}
+.item-info strong{display:block;font-size:13px;margin-bottom:4px}
+.item-info small{font-size:11px;color:#64748b}
+.item-see{font-size:12px;color:#2563eb;font-weight:700;white-space:nowrap}
+#empty{display:none;text-align:center;color:#64748b;font-size:13px;padding:24px}
+footer{text-align:center;padding:20px;color:#718096;font-size:12px}
+.overlay{display:none;position:fixed;inset:0;z-index:1000;background:#0c192d99;backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:18px}
+.overlay.show{display:flex}
+.popup{position:relative;width:min(430px,100%);padding:27px;background:white;border-radius:20px;box-shadow:0 24px 80px #0003}
+.close-x{position:absolute;right:14px;top:14px;width:35px;height:35px;border:0;border-radius:50%;background:#f1f5f9;font-size:23px;cursor:pointer}
+.pop-icon{width:62px;height:62px;background:#eaf2ff;border-radius:17px;display:grid;place-items:center;font-size:30px;margin-bottom:17px}
+.category{display:inline-block;background:#eff6ff;color:#2456a6;border-radius:20px;padding:6px 10px;font-size:11px;font-weight:700;margin-bottom:10px}
+.popup h2{font-size:24px;margin-bottom:10px;padding-right:15px}
+.description{font-size:14px;line-height:1.7;color:#64748b;margin-bottom:22px}
+.actions{display:flex;gap:10px}
+.action{flex:1;border:0;border-radius:10px;padding:13px 12px;font-size:13px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none}
+.cancel{background:#f1f5f9;color:#334155}
+.inside{background:#2563eb;color:white}
+@media(max-width:850px){.layout{grid-template-columns:1fr}#locations{max-height:450px}}
+@media(max-width:500px){header{padding:16px 5%}.brand h1{font-size:19px}.heading h2{font-size:23px}.popup{padding:23px 19px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="brand-icon">
+      <img src="assets\icons\brand-icon.png">
+    </div>
+    <div><h1>Campus Guider</h1><p>Explore your campus with ease</p></div>
+  </div>
+  <a class="back" href="dashboard.html">← Back to Dashboard</a>
+</header>
+
+<main>
+  <div class="heading">
+    <h2>Explore Campus Map</h2>
+    <p>Map par kisi location par click karein ya right-side list se location select karein.</p>
+  </div>
+
+  <div class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <h3>🗺️ Interactive Campus Map</h3>
+        <p>Building select karke uski details dekhein.</p>
+      </div>
+      <div class="map-area">
+        <div class="map-frame">
+          <img class="map-img" src="assets\img\campusmap.jpeg" alt="Campus map"
+          onerror="this.style.display='none';document.getElementById('imgError').style.display='flex'">
+          <div id="imgError" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;text-align:center;padding:20px;color:#475569">
+            Campus image nahi mili. Image ko campus-map.jpeg naam se project folder mein rakhein.
+          </div>
+
+          <svg class="hotspots" viewBox="0 0 1056 1414" preserveAspectRatio="none" aria-label="Campus locations">
+
+            <!-- Boys Hostel -->
+            <polygon class="hotspot" data-id="boys" tabindex="0"
+            points="135,105 700,103 703,254 686,282 141,283"/>
+
+            <!-- Girls Hostel -->
+            <polygon class="hotspot" data-id="girls" tabindex="0"
+            points="812,169 918,108 996,160 996,222 910,316 812,262"/>
+
+            <!-- BBA / BCA Building -->
+            <polygon class="hotspot" data-id="bba" tabindex="0"
+            points="132,350 240,350 247,386 247,722 140,738 133,692"/>
+
+            <!-- Aryabhata Building -->
+            <polygon class="hotspot" data-id="aryabhata" tabindex="0"
+            points="769,340 982,337 983,531 964,549 773,548"/>
+
+            <!-- Reception -->
+            <polygon class="hotspot" data-id="reception" tabindex="0"
+            points="617,445 713,444 713,531 665,531 665,504 617,504"/>
+
+            <!-- Ground / Greenery -->
+            <polygon class="hotspot" data-id="ground" tabindex="0"
+            points="310,447 552,445 571,470 568,609 550,629 316,634 300,606 300,480"/>
+
+            <!-- Canteen near CSE -->
+            <polygon class="hotspot" data-id="canteen" tabindex="0"
+            points="244,674 370,674 370,737 246,737"/>
+
+            <!-- Volleyball Court -->
+            <polygon class="hotspot" data-id="volleyball" tabindex="0"
+            points="242,778 368,777 368,911 244,912"/>
+
+            <!-- Kho-Kho Ground -->
+            <polygon class="hotspot" data-id="khokho" tabindex="0"
+            points="409,779 690,779 689,908 411,911"/>
+
+            <!-- Football Ground -->
+            <polygon class="hotspot" data-id="football" tabindex="0"
+            points="770,594 964,592 965,867 772,868"/>
+
+            <!-- Canteen and Stationery -->
+            <polygon class="hotspot" data-id="stationery" tabindex="0"
+            points="913,887 996,889 995,1052 916,1050"/>
+
+            <!-- Temple -->
+            <polygon class="hotspot" data-id="temple" tabindex="0"
+            points="758,1004 874,1005 875,1114 759,1114"/>
+
+            <!-- Parking areas -->
+            <polygon class="hotspot" data-id="parking1" tabindex="0"
+            points="112,1060 265,1062 265,1254 112,1256"/>
+
+            <polygon class="hotspot" data-id="parking2" tabindex="0"
+            points="265,1064 374,1064 374,1253 266,1253"/>
+
+            <!-- Basketball Court -->
+            <polygon class="hotspot" data-id="basketball" tabindex="0"
+            points="390,1067 510,1067 510,1243 391,1243"/>
+
+            <polygon class="hotspot" data-id="parking3" tabindex="0"
+            points="540,1062 730,1062 730,1248 541,1248"/>
+
+            <polygon class="hotspot" data-id="parking4" tabindex="0"
+            points="780,1120 982,1120 982,1243 780,1243"/>
+
+            <!-- Gate 2 -->
+            <polygon class="hotspot" data-id="gate2" tabindex="0"
+            points="224,1248 278,1248 278,1288 224,1288"/>
+
+            <!-- Main Gate -->
+            <polygon class="hotspot" data-id="maingate" tabindex="0"
+            points="689,1272 775,1272 775,1310 689,1310"/>
+
+            <!-- CSE NORTH - placed after other hotspots for priority -->
+            <polygon class="hotspot cse-hotspot" data-id="cse-north" tabindex="0"
+            points="135,344 714,341 720,435 686,447 622,446 608,427 412,428 407,404 249,405 240,350 135,350"/>
+
+            <!-- CSE MIDDLE -->
+            <polygon class="hotspot cse-hotspot" data-id="cse-middle" tabindex="0"
+            points="615,444 713,443 716,531 717,632 706,647 720,656 718,721 670,735 622,727 623,681 646,665 649,550"/>
+
+            <!-- CSE SOUTH -->
+            <polygon class="hotspot cse-hotspot" data-id="cse-south" tabindex="0"
+            points="245,650 301,650 301,680 590,680 612,650 625,655 625,704 572,731 249,731"/>
+          </svg>
+        </div>
+        <div class="note"><b>Tip:</b> CSE ke North, Middle aur South sections alag clickable hain. Baaki locations bhi clickable hain.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>📍 Campus Locations</h3>
+        <p>Search karke koi bhi location kholein.</p>
+      </div>
+      <div class="search">
+        <input id="search" type="search" placeholder="🔎 Search location..."></div>
+      <div class="count-row"><span>Available locations</span><span id="count">0</span></div>
+      <ul id="locations"></ul>
+      <div id="empty">Koi location nahi mili.</div>
+    </section>
+  </div>
+</main>
+
+<footer>© 2026 Designed And Developed By Surjeet With S4Syntax Team. All rights reserved. | CampusGuide</footer>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="popTitle">
+  <div class="popup">
+    <button class="close-x" id="closeX" aria-label="Close">×</button>
+    <div class="pop-icon" id="popIcon">📍</div>
+    <div class="category" id="popCategory">Campus Location</div>
+    <h2 id="popTitle">Location</h2>
+    <p class="description" id="popDescription"></p>
+    <div class="actions">
+      <button class="action cancel" id="cancel">Close</button>
+      <div class="action inside" id="seeInside">
+        <a href="csenorth.html">See Inside →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const locations=[
+{id:"boys",name:"Boys Hostel",category:"Hostel",icon:"🏢",description:"Boys Hostel ki location aur related information."},
+{id:"girls",name:"Girls Hostel",category:"Hostel",icon:"🏢",description:"Girls Hostel ki location aur related information."},
+{id:"bba",name:"BBA / BCA Building",category:"Academic Building",icon:"🎓",description:"BBA aur BCA Building ki location."},
+{id:"cse-north",name:"CSE North",category:"Academic Building",icon:"💻",description:"CSE Building ka North section."},
+{id:"cse-middle",name:"CSE Middle",category:"Academic Building",icon:"🖥️",description:"CSE Building ka Middle section."},
+{id:"cse-south",name:"CSE South",category:"Academic Building",icon:"📚",description:"CSE Building ka South section."},
+{id:"aryabhata",name:"Aryabhata Building",category:"Academic Building",icon:"🏫",description:"Aryabhata Building ki location."},
+{id:"reception",name:"Reception",category:"Campus Service",icon:"🛎️",description:"General enquiries aur assistance ke liye Reception."},
+{id:"ground",name:"Ground / Greenery",category:"Open Area",icon:"🌳",description:"Campus ka central green ground."},
+{id:"canteen",name:"Canteen",category:"Food & Refreshments",icon:"🍽️",description:"Campus canteen ki location."},
+{id:"volleyball",name:"Volleyball Court",category:"Sports",icon:"🏐",description:"Volleyball practice aur matches ke liye court."},
+{id:"khokho",name:"Kho-Kho Ground",category:"Sports",icon:"🏃",description:"Kho-Kho ground ki location."},
+{id:"football",name:"Football Ground",category:"Sports",icon:"⚽",description:"Football ground aur track ki location."},
+{id:"stationery",name:"Canteen & Stationery",category:"Campus Service",icon:"✏️",description:"Canteen aur stationery shop ka area."},
+{id:"temple",name:"Temple",category:"Campus Facility",icon:"🛕",description:"Campus ke andar temple."},
+{id:"parking1",name:"Parking Area 1",category:"Parking",icon:"🅿️",description:"Parking Area 1."},
+{id:"parking2",name:"Parking Area 2",category:"Parking",icon:"🅿️",description:"Parking Area 2."},
+{id:"parking3",name:"Parking Area 3",category:"Parking",icon:"🅿️",description:"Parking Area 3."},
+{id:"parking4",name:"Parking Area 4",category:"Parking",icon:"🅿️",description:"Parking Area 4."},
+{id:"basketball",name:"Basketball Court",category:"Sports",icon:"🏀",description:"Basketball court ki location."},
+{id:"gate2",name:"Gate 2",category:"Campus Entrance",icon:"🚪",description:"Campus ke Gate 2 ki location."},
+{id:"maingate",name:"Main Gate",category:"Campus Entrance",icon:"🏛️",description:"College campus ka Main Gate."}
+];
+
+const list=document.getElementById("locations");
+const search=document.getElementById("search");
+const count=document.getElementById("count");
+const empty=document.getElementById("empty");
+const overlay=document.getElementById("overlay");
+let selected=null;
+
+function render(term=""){
+  list.innerHTML="";
+  const q=term.trim().toLowerCase();
+  const filtered=locations.filter(x=>
+    x.name.toLowerCase().includes(q)||x.category.toLowerCase().includes(q)
+  );
+  count.textContent=filtered.length;
+  empty.style.display=filtered.length?"none":"block";
+
+  filtered.forEach(location=>{
+    const li=document.createElement("li");
+    li.className="item";
+    li.tabIndex=0;
+    li.setAttribute("role","button");
+
+    const ico=document.createElement("div");
+    ico.className="item-icon";
+    ico.textContent=location.icon;
+
+    const info=document.createElement("div");
+    info.className="item-info";
+    const name=document.createElement("strong");
+    name.textContent=location.name;
+    const cat=document.createElement("small");
+    cat.textContent=location.category;
+    info.append(name,cat);
+
+    const see=document.createElement("span");
+    see.className="item-see";
+    see.textContent="See →";
+    li.append(ico,info,see);
+
+    li.addEventListener("click",()=>openLocation(location.id));
+    li.addEventListener("keydown",e=>{
+      if(e.key==="Enter"||e.key===" "){
+        e.preventDefault();
+        openLocation(location.id);
+      }
+    });
+    list.appendChild(li);
+  });
+}
+
+function openLocation(id){
+  const found=locations.find(x=>x.id===id);
+  if(!found)return;
+  selected=found;
+  document.getElementById("popIcon").textContent=found.icon;
+  document.getElementById("popCategory").textContent=found.category;
+  document.getElementById("popTitle").textContent=found.name;
+  document.getElementById("popDescription").textContent=found.description;
+  overlay.classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function closePopup(){
+  overlay.classList.remove("show");
+  document.body.style.overflow="";
+}
+
+search.addEventListener("input",()=>render(search.value));
+document.getElementById("closeX").addEventListener("click",closePopup);
+document.getElementById("cancel").addEventListener("click",closePopup);
+
+overlay.addEventListener("click",e=>{
+  if(e.target===overlay)closePopup();
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closePopup();
+});
+
+document.getElementById("seeInside").addEventListener("click",()=>{
+  if(selected){
+    window.location.href="csenorth.html"+encodeURIComponent(selected.name("CSE North"));
+  }
+});
+
+/*
+  CSE polygons SVG mein last hain.
+  Isliye CSE ke overlap wale points par bhi CSE ka click pehle target hoga.
+*/
+document.querySelectorAll(".hotspot").forEach(shape=>{
+  shape.setAttribute("aria-label",shape.dataset.id);
+
+  shape.addEventListener("click",e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    openLocation(shape.dataset.id);
+  });
+
+  shape.addEventListener("keydown",e=>{
+    if(e.key==="Enter"||e.key===" "){
+      e.preventDefault();
+      e.stopPropagation();
+      openLocation(shape.dataset.id);
+    }
+  });
+});
+
+render();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Floors & Rooms | CampusGuide</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/csenorth.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="assets\icons\brand-icon.png">
+            </div>
+
+            <span>
+                Campus<span>Guide</span>
+            </span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="csenorth.html" class="active">Cse North Zone</a>
+            <a href="index.html#events">Events</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+            <a href="register.html" class="register-btn">
+                Register
+            </a>
+        </div>
+
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+            <i data-lucide="menu"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="index.html#home">Home</a>
+    <a href="index.html#features">Features</a>
+    <a href="floors.html">Floors Rooms</a>
+    <a href="events.html">Events</a>
+
+    <div class="mobile-buttons">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+
+</div>
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+<section class="floors-hero">
+
+    <div class="section-container">
+
+        <span class="section-label">
+            CSE NORTH ZONE
+        </span>
+
+        <h1>Find Any Room or Lab</h1>
+
+        <p>
+            Browse only Cse North Zone floor of the building, search by room number or
+            lab name and see exactly where it is.
+        </p>
+
+        <div class="search-box">
+            <i data-lucide="search"></i>
+
+            <input
+                type="search"
+                id="floorSearch"
+                placeholder="Try 432, Chemistry Lab, Faculty, Lift..."
+                aria-label="Search rooms and labs"
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                id="clearSearch"
+                class="clear-btn"
+                aria-label="Clear search"
+                hidden
+            >&times;</button>
+        </div>
+
+        <div class="chips" id="typeChips" role="group" aria-label="Filter by type"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FLOOR EXPLORER ================= -->
+
+<section class="floors-section">
+
+    <div class="section-container">
+
+        <div class="floor-tabs" id="floorTabs" role="tablist" aria-label="Select floor"></div>
+
+        <div class="explorer" id="planSection">
+
+            <div class="plan-card">
+                <div class="plan-scroll" id="planHolder"></div>
+                <p class="plan-hint">
+                    Plan view - blocks are arranged as they are on the floor.
+                    The Ramp and Lift are at the right end.
+                </p>
+            </div>
+
+            <aside class="detail-panel" id="detailPanel" aria-live="polite"></aside>
+
+        </div>
+
+        <div class="list-card">
+            <h2 id="listTitle"></h2>
+            <div class="result-list" id="resultList"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets\icons\brand-icon.png">
+                </div>
+
+                <span>
+                    Campus<span>Guide</span>
+                </span>
+            </div>
+
+            <p>
+                Designed And Developed By Surjeet With S4Syntax Team.
+            </p>
+
+        </div>
+
+
+        <div class="footer-social">
+
+           <a href="#">
+                <img src="assets\icons\insta.webp">
+            </a>
+
+            <a href="#">
+                <img src="assets\icons\linkdin.png">
+            </a>
+
+            <a href="#">
+                <img src="assets\icons\github.png">
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 S4Syntax Team. All rights reserved. | CampusGuide
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/csenorth-data.js"></script>
+<script src="js/csenorth.js"></script>
+<script src="js/home.js"></script>
+
+</body>
+</html>

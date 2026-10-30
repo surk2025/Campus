@@ -539,6 +539,7 @@ img {
 }
 
 .blue {
+    width:23%;
     color: #2563eb;
     background: #eff6ff;
 }
@@ -549,21 +550,25 @@ img {
 }
 
 .purple {
+    width:20%;
     color: #7c3aed;
     background: #f5f3ff;
 }
 
 .orange {
+    width:18%;
     color: #ea580c;
     background: #fff7ed;
 }
 
 .pink {
+    width:15%;
     color: #db2777;
     background: #fdf2f8;
 }
 
 .cyan {
+    width:21%;
     color: #0891b2;
     background: #ecfeff;
 }

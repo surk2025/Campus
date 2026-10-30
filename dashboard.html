@@ -14,7 +14,9 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="logo">
-                <span class="logo-icon">🎓</span>
+                <div class="logo-icon">
+                    
+                    </div>
                 <span>CampusGuide</span>
             </div>
 
@@ -23,10 +25,10 @@
             <nav class="navigation">
                 <a href="index.html" class="nav-link">🏠 Home</a>
                 <a href="dashboard.html" class="nav-link active">📊 Dashboard</a>
-                <a href="map.html" class="nav-link">🗺️ Campus Map</a>
-                <a href="classrooms.html" class="nav-link">🏫 Classrooms</a>
-                <a href="labs.html" class="nav-link">💻 Laboratories</a>
-                <a href="faculty.html" class="nav-link">👨‍🏫 Faculty</a>
+                <a href="campusmap.html" class="nav-link">🗺️ Campus Map</a>
+                <a href="csenorth.html" class="nav-link">🏫 Classrooms</a>
+                <a href="csenorth.html" class="nav-link">💻 Laboratories</a>
+                <a href="csenorth.html" class="nav-link">👨‍🏫 Faculty</a>
                 <a href="events.html" class="nav-link">📅 Events</a>
             </nav>
 
@@ -34,7 +36,7 @@
                 <a href="login.html" class="nav-link logout" id="logoutBtn">
                     🚪 Logout
                 </a>
-                <p class="sidebar-footer">© 2026 S4Syntax Team</p>
+                <p class="sidebar-footer">© 2026 Designed And Developed By Surjeet With S4Syntax Team</p>
             </div>
         </aside>
 
@@ -53,7 +55,7 @@
                 <div class="profile">
                     <div class="avatar" id="userAvatar">S</div>
                     <div>
-                        <strong id="userName">Student</strong>
+                        <strong id="userName">Surjeet Kushwaha</strong>
                         <p>Campus Explorer</p>
                     </div>
                 </div>
@@ -63,16 +65,18 @@
             <section class="welcome-card">
                 <div>
                     <p class="welcome-label">YOUR CAMPUS, YOUR GUIDE</p>
-                    <h1>Welcome back, <span id="welcomeName">Student</span>! 👋</h1>
+                    <h1>Welcome back, <span id="welcomeName">Surjeet Kushwaha</span>! 👋</h1>
                     <p>
                         Explore your campus, find locations and stay updated
                         with everything happening around you.
                     </p>
-                    <a href="map.html" class="primary-btn">
+                    <a href="campusmap.html" class="primary-btn">
                         Explore Campus →
                     </a>
                 </div>
-                <div class="welcome-illustration">🧭</div>
+                <div class="welcome-illustration">
+                    <img src="assets\icons\brand-icon.png">
+                </div>
             </section>
 
             <!-- Statistics -->
@@ -87,14 +91,14 @@
                 <article class="stat-card">
                     <div class="stat-icon green">🏫</div>
                     <p>Classrooms</p>
-                    <h2>15+</h2>
+                    <h2>100+</h2>
                     <span>Find your classroom</span>
                 </article>
 
                 <article class="stat-card">
                     <div class="stat-icon orange">💻</div>
                     <p>Laboratories</p>
-                    <h2>08+</h2>
+                    <h2>35+</h2>
                     <span>Discover campus labs</span>
                 </article>
 
@@ -107,27 +111,39 @@
             </section>
 
             <!-- Search -->
-            <section class="section-card search-section">
+            <!-- <section class="section-card search-section">
                 <div class="section-heading">
                     <div>
                         <h2>Where do you want to go?</h2>
                         <p>Search for a place on your campus.</p>
                     </div>
                     <span class="heading-icon">🔎</span>
-                </div>
-
-                <form id="searchForm" class="search-form">
+                </div> -->
+     <!-- <div class="search">
+         <input id="search" type="search" placeholder="🔎 Search location..."></div> -->
+                <!-- <form id="searchForm" class="search-form">
                     <input
                         type="search"
-                        id="campusSearch"
+                        id="search"
                         placeholder="Try Computer Lab, Library, Auditorium..."
                         aria-label="Search campus locations"
                         required
                     >
                     <button type="submit" class="primary-btn">Search</button>
-                </form>
-                <p id="searchMessage" class="message" aria-live="polite"></p>
-            </section>
+                </form> -->
+                <!-- <p id="searchMessage" class="message" aria-live="polite"></p>
+            </section> -->
+            <section class="panel">
+      <div class="panel-head">
+        <h3>📍 Campus Locations</h3>
+        <p>Search karke koi bhi location kholein.</p>
+      </div>
+      <div class="search">
+        <input id="search" type="search" placeholder="🔎 Search location..."></div>
+      <div class="count-row"><span>Available locations</span><span id="count">0</span></div>
+      <ul id="locations"></ul>
+      <div id="empty">Koi location nahi mili.</div>
+    </section>
 
             <!-- Quick Access -->
             <section class="quick-section">
@@ -139,16 +155,16 @@
                 </div>
 
                 <div class="quick-grid">
-                    <a href="map.html" class="quick-card">
+                    <a href="campusmap.html" class="quick-card">
                         <div class="quick-icon blue">🗺️</div>
-                        <h3>Campus Map</h3>
-                        <p>Find locations and routes.</p>
-                        <span>Explore →</span>
+                        <h3>Inside Cse North Zone</h3>
+                        <p>Find Classrooms, Laboratories, and faculty and their rooms</p>
+                        <span>Explore Now→</span>
                     </a>
 
-                    <a href="classrooms.html" class="quick-card">
+                    <!-- <a href="csenorth.html" class="quick-card">
                         <div class="quick-icon green">🏫</div>
-                        <h3>Classrooms</h3>
+                        <h3>Classrooms And Labs</h3>
                         <p>Locate classrooms easily.</p>
                         <span>View rooms →</span>
                     </a>
@@ -165,7 +181,7 @@
                         <h3>Faculty</h3>
                         <p>Find faculty and their rooms.</p>
                         <span>View faculty →</span>
-                    </a>
+                    </a> -->
                 </div>
             </section>
 
@@ -181,36 +197,36 @@
 
                 <div class="event-item">
                     <div class="event-date">
-                        <span>OCT</span>
-                        <strong>15</strong>
+                        <span>NOV</span>
+                        <strong>08</strong>
                     </div>
                     <div class="event-details">
-                        <h3>Technical Workshop</h3>
-                        <p>Learn new technologies and practical skills.</p>
+                        <h3>Technical </h3>
+                        <p>Campus Hackathon 2026</p>
+                    </div>
+                    <span class="event-tag">Tech Events</span>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span>NOV</span>
+                        <strong>12</strong>
+                    </div>
+                    <div class="event-details">
+                        <h3>Tech Workshop</h3>
+                        <p>AI & Machine Learning Workshop</p>
                     </div>
                     <span class="event-tag">Workshop</span>
                 </div>
 
                 <div class="event-item">
                     <div class="event-date">
-                        <span>OCT</span>
+                        <span>NOV</span>
                         <strong>18</strong>
                     </div>
                     <div class="event-details">
-                        <h3>Project Exhibition</h3>
-                        <p>Explore student projects and innovations.</p>
-                    </div>
-                    <span class="event-tag">Academic</span>
-                </div>
-
-                <div class="event-item">
-                    <div class="event-date">
-                        <span>OCT</span>
-                        <strong>22</strong>
-                    </div>
-                    <div class="event-details">
-                        <h3>Campus Activity Day</h3>
-                        <p>Participate in campus activities.</p>
+                        <h3>Cultural</h3>
+                        <p>Cultural Fest</p>
                     </div>
                     <span class="event-tag">Activity</span>
                 </div>
@@ -224,6 +240,118 @@
 
         </main>
     </div>
+    <script>
+        const locations=[
+{id:"boys",name:"Boys Hostel",category:"Hostel",icon:"🏢",description:"Boys Hostel ki location aur related information."},
+{id:"girls",name:"Girls Hostel",category:"Hostel",icon:"🏢",description:"Girls Hostel ki location aur related information."},
+{id:"bba",name:"BBA / BCA Building",category:"Academic Building",icon:"🎓",description:"BBA aur BCA Building ki location."},
+{id:"cse-north",name:"CSE North",category:"Academic Building",icon:"💻",description:"CSE Building ka North section."},
+{id:"cse-middle",name:"CSE Middle",category:"Academic Building",icon:"🖥️",description:"CSE Building ka Middle section."},
+{id:"cse-south",name:"CSE South",category:"Academic Building",icon:"📚",description:"CSE Building ka South section."},
+{id:"aryabhata",name:"Aryabhata Building",category:"Academic Building",icon:"🏫",description:"Aryabhata Building ki location."},
+{id:"reception",name:"Reception",category:"Campus Service",icon:"🛎️",description:"General enquiries aur assistance ke liye Reception."},
+{id:"ground",name:"Ground / Greenery",category:"Open Area",icon:"🌳",description:"Campus ka central green ground."},
+{id:"canteen",name:"Canteen",category:"Food & Refreshments",icon:"🍽️",description:"Campus canteen ki location."},
+{id:"volleyball",name:"Volleyball Court",category:"Sports",icon:"🏐",description:"Volleyball practice aur matches ke liye court."},
+{id:"khokho",name:"Kho-Kho Ground",category:"Sports",icon:"🏃",description:"Kho-Kho ground ki location."},
+{id:"football",name:"Football Ground",category:"Sports",icon:"⚽",description:"Football ground aur track ki location."},
+{id:"stationery",name:"Canteen & Stationery",category:"Campus Service",icon:"✏️",description:"Canteen aur stationery shop ka area."},
+{id:"temple",name:"Temple",category:"Campus Facility",icon:"🛕",description:"Campus ke andar temple."},
+{id:"parking1",name:"Parking Area 1",category:"Parking",icon:"🅿️",description:"Parking Area 1."},
+{id:"parking2",name:"Parking Area 2",category:"Parking",icon:"🅿️",description:"Parking Area 2."},
+{id:"parking3",name:"Parking Area 3",category:"Parking",icon:"🅿️",description:"Parking Area 3."},
+{id:"parking4",name:"Parking Area 4",category:"Parking",icon:"🅿️",description:"Parking Area 4."},
+{id:"basketball",name:"Basketball Court",category:"Sports",icon:"🏀",description:"Basketball court ki location."},
+{id:"gate2",name:"Gate 2",category:"Campus Entrance",icon:"🚪",description:"Campus ke Gate 2 ki location."},
+{id:"maingate",name:"Main Gate",category:"Campus Entrance",icon:"🏛️",description:"College campus ka Main Gate."}
+];
+
+const list=document.getElementById("locations");
+const search=document.getElementById("search");
+const count=document.getElementById("count");
+const empty=document.getElementById("empty");
+const overlay=document.getElementById("overlay");
+let selected=null;
+
+function render(term=""){
+  list.innerHTML="";
+  const q=term.trim().toLowerCase();
+  const filtered=locations.filter(x=>
+    x.name.toLowerCase().includes(q)||x.category.toLowerCase().includes(q)
+  );
+  count.textContent=filtered.length;
+  empty.style.display=filtered.length?"none":"block";
+
+  filtered.forEach(location=>{
+    const li=document.createElement("li");
+    li.className="item";
+    li.tabIndex=0;
+    li.setAttribute("role","button");
+
+    const ico=document.createElement("div");
+    ico.className="item-icon";
+    ico.textContent=location.icon;
+
+    const info=document.createElement("div");
+    info.className="item-info";
+    const name=document.createElement("strong");
+    name.textContent=location.name;
+    const cat=document.createElement("small");
+    cat.textContent=location.category;
+    info.append(name,cat);
+
+    const see=document.createElement("span");
+    see.className="item-see";
+    see.textContent="See →";
+    li.append(ico,info,see);
+
+    li.addEventListener("click",()=>openLocation(location.id));
+    li.addEventListener("keydown",e=>{
+      if(e.key==="Enter"||e.key===" "){
+        e.preventDefault();
+        openLocation(location.id);
+      }
+    });
+    list.appendChild(li);
+  });
+}
+
+function openLocation(id){
+  const found=locations.find(x=>x.id===id);
+  if(!found)return;
+  selected=found;
+  document.getElementById("popIcon").textContent=found.icon;
+  document.getElementById("popCategory").textContent=found.category;
+  document.getElementById("popTitle").textContent=found.name;
+  document.getElementById("popDescription").textContent=found.description;
+  overlay.classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function closePopup(){
+  overlay.classList.remove("show");
+  document.body.style.overflow="";
+}
+
+search.addEventListener("input",()=>render(search.value));
+document.getElementById("closeX").addEventListener("click",closePopup);
+document.getElementById("cancel").addEventListener("click",closePopup);
+
+overlay.addEventListener("click",e=>{
+  if(e.target===overlay)closePopup();
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closePopup();
+});
+
+document.getElementById("seeInside").addEventListener("click",()=>{
+  if(selected){
+    window.location.href="inside.html?building="+encodeURIComponent(selected.id);
+  }
+});
+
+    </script>
 
 </body>
 </html>
